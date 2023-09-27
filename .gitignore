@@ -160,3 +160,4 @@ cython_debug/
 *.pyc
 .venv/
 logs/
+stra2ical/.credentials.json
