@@ -2,9 +2,9 @@
 
 Add all your Strava activities to your calendar.
 
-![plot](./Calendar_Week.png)
+![plot](https://github.com/thomascamminady/stra2ical/blob/main/Calendar_Week.png)
 
-![plot](./Calendar.png)
+![plot](https://github.com/thomascamminady/stra2ical/blob/main/Calendar_Month.png)
 
 ## Authenticate
 
