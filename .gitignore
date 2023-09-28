@@ -166,3 +166,4 @@ activities/*.parquet
 calendar/
 stra2ical/.app.json
 stra2ical/.client.json
+activities/

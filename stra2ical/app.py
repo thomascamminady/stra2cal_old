@@ -27,3 +27,8 @@ async def strava_calendar() -> str:
     # to this calendar.
     with open(data_manager.full_calendar_path, encoding="UTF-8") as f:
         return f.read()  # Return ics file as string.
+
+
+@app.get("/download_all")
+async def download_all() -> None:
+    await DataManager().download_all_activities()

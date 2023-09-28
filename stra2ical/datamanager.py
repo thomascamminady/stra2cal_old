@@ -27,8 +27,8 @@ class DataManager:
 
     def assemble_data(self) -> pl.DataFrame:
         """Combine parquet files into dataframe."""
-        df = (
-            pl.scan_parquet(f"{self.__location}/*.parquet")
+        return (
+            pl.scan_parquet(f"{self.__location}/pages/*.parquet")
             .with_columns(
                 pl.col("start_date").str.strptime(pl.Datetime),
                 (1e6 * pl.col("elapsed_time")).cast(pl.Duration).alias("dt"),
@@ -39,7 +39,6 @@ class DataManager:
             .sort("start_date", descending=True)
             .collect()
         )
-        return df
 
     def df_to_events(self, df: pl.DataFrame) -> list[Event]:
         """Turn dataframe into events."""
@@ -92,10 +91,15 @@ class DataManager:
         if result.status_code == 200:
             now = datetime.now().strftime("%Y%m%dT%H%M%S%f")[:-3]
             df = pl.from_dicts(result.json(), infer_schema_length=None)
-            df.write_parquet(f"activities/{now}.parquet")
+            df.write_parquet(f"{self.__location}/pages/{now}.parquet")
             logger.info(f"Data that was downloaded has shape {df.shape}")
 
-    async def download_all_activities(self, max_page: int = 200) -> None:
+    async def download_all_activities(
+        self, max_page: int = 200, per_page: int = 200
+    ) -> None:
         """Download all activities."""
         for page in range(1, max_page):
-            await self.download_activities_from_page(page)
+            await self.download_activities_from_page(
+                page=page,
+                per_page=per_page,
+            )
