@@ -21,11 +21,11 @@ def status() -> str:
 
 
 @app.get("/calendar", response_class=PlainTextResponse)
-def calendar():
-    download(1)
-    create_calendar()
+async def calendar():
+    await download(1)  # Download latest page of activities daily
+    create_calendar()  # Create a new ics file
     with open("calendar/Strava.ics", encoding="UTF-8") as f:
-        return f.read()
+        return f.read()  # Return ics file as string.
 
 
 def assemble_dataframe() -> pl.DataFrame:
@@ -43,7 +43,6 @@ def assemble_dataframe() -> pl.DataFrame:
     )
 
 
-@app.get("/create_calendar")
 def create_calendar() -> str:
     df = assemble_dataframe()
     logging.info("Collected dataframe.")
@@ -77,16 +76,6 @@ def create_calendar() -> str:
     return message
 
 
-@app.get("/download_all")
-async def download_all():
-    for page in range(1, 200):
-        try:
-            await download(page)
-        except Exception:
-            break
-
-
-@app.get("/download/{page}")
 async def download(page: int) -> dict[str, int]:
     update_token()
     # Get the tokens from file to connect to Strava
@@ -96,7 +85,6 @@ async def download(page: int) -> dict[str, int]:
 
     url = f"https://www.strava.com/api/v3/athlete/activities?per_page=200&page={page}"
     r = requests.get(url + "&access_token=" + access_token, timeout=60)
-    print(page, r.status_code)
     if r.status_code == 200:
         # Get the current datetime
         # Convert the datetime to a filename-friendly format with milliseconds
@@ -108,6 +96,14 @@ async def download(page: int) -> dict[str, int]:
             f"activities/{now}.parquet"
         )
     return {"status": r.status_code}
+
+
+async def download_all():
+    for page in range(1, 200):
+        try:
+            await download(page)
+        except Exception:
+            break
 
 
 def update_token():
