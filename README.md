@@ -13,7 +13,8 @@ https://medium.com/swlh/using-python-to-connect-to-stravas-api-and-analyse-your-
 ```bash
 nohup ./start_app.sh > nohup.log 2>&1 &
  ```
-```
+
+```bash
 crontab -e
 0 */6 * * * /Users/thomascamminady/Repos/stra2ical/start_app.sh
 ```
