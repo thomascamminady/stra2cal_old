@@ -6,27 +6,20 @@ authors = ["Thomas Camminady <0milieux_member@icloud.com>"]
 
 [tool.poetry.dependencies]
 python = ">=3.10,<3.12"
-pyclean = "^2.7.3"
 requests = "^2.31.0"
-requests-oauthlib = "^1.3.1"
-rich = "^13.5.3"
 fastapi = "^0.103.1"
 uvicorn = "^0.23.2"
 numpy = "^1.26.0"
 icalendar = "^5.0.10"
 polars = "^0.19.5"
-pytest = "^7.4.2"
 
 [tool.poetry.group.dev.dependencies]
 mypy = "^1.4.1"
 black = "^23.7.0"
 ruff = "^0.0.278"
-pyclean = "^2.7.3"
 pre-commit = "^3.3.3"
 ipykernel = "^6.24.0"
-pytest = "^7.4.0"
 pytest-cov = "^4.1.0"
-rich = "^13.4.2"
 regex = "^2023.6.3"
 
 [build-system]
