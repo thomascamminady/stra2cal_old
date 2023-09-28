@@ -17,10 +17,10 @@ async def strava_calendar() -> str:
     """Receive a calendar string."""
     # Set up a DataManager object.
     data_manager = DataManager()
-    # Pull the latest 10 activities from Strava.
+    # Pull the latest 5 activities from Strava.
     # If this calendar is refreshed daily, this should be enough
-    # unless you would hypothetically do more than 10 activities per day.
-    await data_manager.download_activities_from_page(page=1, per_page=10)
+    # unless you would hypothetically do more than 5 activities per day.
+    await data_manager.download_activities_from_page(page=1, per_page=5)
     # Using the downloaded data, we create a .ics file on disk.
     data_manager.write_ics()
     # Return the content of the .ics file as a string so that you can subscribe
