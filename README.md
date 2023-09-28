@@ -22,8 +22,14 @@ nohup ./start_app.sh > nohup.log 2>&1 &
  ```
 We can also add this as a `cronjob`, i.e., every six hours, we check if our server is still running and if not, we restart it.
 
+Run 
+
 ```bash
 crontab -e
+```
+Add this entry
+
+```bash
 0 */6 * * * /path/to/the/script/stra2ical/start_app.sh
 ```
 
