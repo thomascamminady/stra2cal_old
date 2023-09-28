@@ -34,7 +34,7 @@ class DataManager:
                 (1e6 * pl.col("elapsed_time")).cast(pl.Duration).alias("dt"),
             )
             .with_columns((pl.col("start_date") + pl.col("dt")).alias("end"))
-            .select("name", "start_date", "end", "distance","id","start_latlng")
+            .select("name", "start_date", "end", "distance", "id", "start_latlng")
             .unique()
             .sort("start_date", descending=True)
             .collect()
@@ -50,7 +50,9 @@ class DataManager:
                 if np.isfinite(row["distance"]) and row["distance"] > 0:
                     summary += f""" ({np.round(row["distance"]/1000,1)}km)"""
                 event.add("summary", summary)
-                event.add("description",f"""https://www.strava.com/activities/{row["id"]}""")
+                event.add(
+                    "description", f"""https://www.strava.com/activities/{row["id"]}"""
+                )
                 event.add("dtstart", row["start_date"])
                 event.add("dtend", row["end"])
                 events.append(event)
