@@ -31,4 +31,5 @@ async def strava_calendar() -> str:
 
 @app.get("/download_all")
 async def download_all() -> None:
+    """Downloads the last 200 pages that contain activities from Strava."""
     await DataManager().download_all_activities()
