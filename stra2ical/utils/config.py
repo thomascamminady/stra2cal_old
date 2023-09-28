@@ -17,7 +17,7 @@ class Config:
     # Define the root folder path as the grandparent of the folder containing this file
     foldername_root: Path = Path(__file__).parent.parent.parent.resolve()
     # Define the log folder path as a subfolder named 'logs' in the root folder
-    foldername_log: Path = foldername_root / "logs"
+    foldername_log: Path = foldername_root / ".logs"
     # Define the debug log file path as a file named 'debug.log' in the log folder
     filename_debug_log: Path = foldername_log / "debug.log"
 

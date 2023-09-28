@@ -36,9 +36,9 @@ def assemble_dataframe() -> pl.DataFrame:
             (1e6 * pl.col("elapsed_time")).cast(pl.Duration).alias("elapsed"),
         )
         .with_columns((pl.col("start_date") + pl.col("elapsed")).alias("end_date"))
-        .sort("start_date", descending=True)
         .select("name", "start_date", "end_date", "distance")
         .unique()
+        .sort("start_date", descending=True)
         .collect()
     )
 
