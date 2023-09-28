@@ -2,9 +2,7 @@
 
 Add all your Strava activities to your calendar.
 
-![plot](https://raw.githubusercontent.com/thomascamminady/stra2ical/main/Calendar_Week.png)
-
-![plot](https://raw.githubusercontent.com/thomascamminady/stra2ical/main/Calendar_Month.png)
+<img src="https://raw.githubusercontent.com/thomascamminady/stra2ical/main/Calendar_Week.png" width="40%" alt="Calendar Week"><img src="https://raw.githubusercontent.com/thomascamminady/stra2ical/main/Calendar_Month.png" width="40%" alt="Calendar Month">
 
 
 ## Authenticate
