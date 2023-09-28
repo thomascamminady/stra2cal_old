@@ -29,7 +29,7 @@ crontab -e
 
 Next we have to **only once** manually trigger the download of all past Strava activities by opening a browser and visiting
 
-```
+```bash
 127.0.0.1:7777/download_all
 ```
 
@@ -37,7 +37,7 @@ You only need to do this once to download all past activities. The subscription 
 
 Then open `Calendar.app` and go to `File > New Calendar Subscription` and add
 
-```
+```bash
 127.0.0.1:7777/strava_calendar
 ```
 
