@@ -161,3 +161,6 @@ cython_debug/
 .venv/
 logs/
 stra2ical/.credentials.json
+stra2ical/.strava_tokens.json
+activities/*.parquet
+calendar/
