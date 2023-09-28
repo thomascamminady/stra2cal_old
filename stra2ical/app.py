@@ -110,6 +110,9 @@ def update_token():
     # Get the tokens from file to connect to Strava
     with open("stra2ical/.strava_tokens.json", encoding="UTF-8") as json_file:
         strava_tokens = json.load(json_file)
+    with open("stra2ical/.app.json", encoding="UTF-8") as json_file:
+        app_tokens = json.load(json_file)
+
     # If access_token has expired then
     # use the refresh_token to get the new access_token
     if strava_tokens["expires_at"] < time.time():
@@ -117,8 +120,8 @@ def update_token():
         response = requests.post(
             url="https://www.strava.com/oauth/token",
             data={
-                "client_id": 87791,
-                "client_secret": "af33a95499d795e4a9605534bdec4db96130d9dc",
+                "client_id": app_tokens["client_id"],
+                "client_secret": app_tokens["client_secret"],
                 "grant_type": "refresh_token",
                 "refresh_token": strava_tokens["refresh_token"],
             },

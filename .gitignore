@@ -164,3 +164,4 @@ stra2ical/.credentials.json
 stra2ical/.strava_tokens.json
 activities/*.parquet
 calendar/
+stra2ical/.app.json
