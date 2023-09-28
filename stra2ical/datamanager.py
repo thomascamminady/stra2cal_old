@@ -31,10 +31,10 @@ class DataManager:
             pl.scan_parquet(f"{self.__location}/*.parquet")
             .with_columns(
                 pl.col("start_date").str.strptime(pl.Datetime),
-                (1e6 * pl.col("elapsed_time")).cast(pl.Duration).alias("elapsed"),
+                (1e6 * pl.col("elapsed_time")).cast(pl.Duration).alias("dt"),
             )
-            .with_columns((pl.col("start_date") + pl.col("elapsed")).alias("end_date"))
-            .select("name", "start_date", "end_date", "distance")
+            .with_columns((pl.col("start_date") + pl.col("dt")).alias("end"))
+            .select("name", "start_date", "end", "distance")
             .unique()
             .sort("start_date", descending=True)
             .collect()
@@ -52,7 +52,7 @@ class DataManager:
                     summary += f""" ({np.round(row["distance"]/1000,1)}km)"""
                 event.add("summary", summary)
                 event.add("dtstart", row["start_date"])
-                event.add("dtend", row["end_date"])
+                event.add("dtend", row["end"])
                 events.append(event)
             except Exception as exception:
                 logger.error(exception)
@@ -79,23 +79,23 @@ class DataManager:
 
     async def download_activities_from_page(
         self, page: int, per_page: int = 200
-    ) -> dict[str, int]:
+    ) -> None:
         """Download recent activities."""
         auth = Authenticator()
         auth.update_token()
         # Get the tokens from file to connect to Strava
         access_token = str(auth.tokens_strava["access_token"])
 
-        url = f"https://www.strava.com/api/v3/athlete/activities?per_page={per_page}&page={page}"
+        params = f"""per_page={per_page}&page={page}"""
+        url = f"https://www.strava.com/api/v3/athlete/activities?{params}"
         result = requests.get(url + "&access_token=" + access_token, timeout=60)
         if result.status_code == 200:
             now = datetime.now().strftime("%Y%m%dT%H%M%S%f")[:-3]
-            pl.from_dicts(result.json(), infer_schema_length=None).write_parquet(
-                f"activities/{now}.parquet"
-            )
-        return {"status": result.status_code}
+            df = pl.from_dicts(result.json(), infer_schema_length=None)
+            df.write_parquet(f"activities/{now}.parquet")
+            logger.info(f"Data that was downloaded has shape {df.shape}")
 
-    async def download_all_activities(self, max_page: int = 200):
+    async def download_all_activities(self, max_page: int = 200) -> None:
         """Download all activities."""
         for page in range(1, max_page):
             await self.download_activities_from_page(page)

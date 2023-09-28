@@ -13,7 +13,7 @@ def hello_world() -> str:
 
 
 @app.get("/strava_calendar", response_class=PlainTextResponse)
-async def strava_calendar():
+async def strava_calendar() -> str:
     """Receive a calendar string."""
     # Set up a DataManager object.
     data_manager = DataManager()
