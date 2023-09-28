@@ -23,7 +23,7 @@ We can also add this as a `cronjob`, i.e., every six hours, we check if our serv
 
 ```bash
 crontab -e
-0 */6 * * * /Users/thomascamminady/Repos/stra2ical/start_app.sh
+0 */6 * * * /path/to/the/script/stra2ical/start_app.sh
 ```
 
 Next we have to **only once** manually trigger the download of all past Strava activities by opening a browser and visiting
