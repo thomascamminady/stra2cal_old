@@ -9,7 +9,7 @@ then
     # Start poetry shell and run the app. This assumes that your poetry environment
     # is correctly set up to run the app immediately upon entering the shell.
     # If not, you may need to modify this.
-    poetry run uvicorn stra2ical.app:app --reload
+    poetry run uvicorn stra2ical.app:app --reload --port 7777
 else
     echo "The server is already running!"
 fi

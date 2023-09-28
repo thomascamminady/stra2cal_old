@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.responses import PlainTextResponse
 
 from stra2ical.datamanager import DataManager
+from stra2ical.utils.logger import logger
 
 app = FastAPI()
 
@@ -9,12 +10,14 @@ app = FastAPI()
 @app.get("/")
 def hello_world() -> str:
     """Print a "Hello, World!" message."""
+    logger.info("[ROUTE] /")
     return "Hello, World!"
 
 
 @app.get("/strava_calendar", response_class=PlainTextResponse)
 async def strava_calendar() -> str:
     """Receive a calendar string."""
+    logger.info("[ROUTE] /strava_calendar")
     # Set up a DataManager object.
     data_manager = DataManager()
     # Pull the latest 5 activities from Strava.
@@ -32,4 +35,5 @@ async def strava_calendar() -> str:
 @app.get("/download_all")
 async def download_all() -> None:
     """Downloads the last 200 pages that contain activities from Strava."""
+    logger.info("[ROUTE] /download_all")
     await DataManager().download_all_activities()
