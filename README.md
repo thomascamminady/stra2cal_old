@@ -37,7 +37,7 @@ You only need to do this once to download all past activities. The subscription 
 Then open `Calendar.app` and go to `File > New Calendar Subscription` and add
 
 ```
-127.0.0.1:7777/strava_calendar
+http://127.0.0.1:7777/strava_calendar
 ```
 
 Set it to refresh daily. This will trigger a daily download of the last activities and will return the calendar entries.
