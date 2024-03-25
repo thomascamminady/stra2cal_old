@@ -38,7 +38,7 @@ Clone this repository and run `poetry install`.
 
 The idea is that we are using `uvicorn` to host a webserver on your local machine and then we will subscribe to the hosted calendar.
 
-The `start_app.sh` script is just starting the server.
+The `start_app.sh` script is just starting the server. ***In the `start_app.sh` script, you have to update the path to the repository.***
 
 ```bash
 nohup ./start_app.sh > nohup.log 2>&1 &
