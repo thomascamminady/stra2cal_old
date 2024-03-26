@@ -168,3 +168,6 @@ stra2ical/.app.json
 stra2ical/.client.json
 activities/
 .DS_Store
+html/
+notebooks/summary.csv
+notebooks/vis.ipynb
