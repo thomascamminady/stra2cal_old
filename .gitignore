@@ -168,3 +168,6 @@ stra2cal/.app.json
 stra2cal/.client.json
 activities/
 .DS_Store
+html/
+notebooks/summary.csv
+notebooks/vis.ipynb
