@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "stra2ical"
+name = "stra2cal"
 version = "0.1.0"
 description = ""
 authors = ["Thomas Camminady <0milieux_member@icloud.com>"]
@@ -13,6 +13,9 @@ numpy = "^1.26.0"
 icalendar = "^5.0.10"
 polars = "^0.19.5"
 rich = "^13.5.3"
+polyline = "^2.0.1"
+matplotlib = "^3.8.2"
+pyclean = "^3.0.0"
 
 [tool.poetry.group.dev.dependencies]
 mypy = "^1.4.1"
@@ -60,4 +63,4 @@ convention = "numpy"
 "tests/*" = ["S101"]
 
 [tool.ruff.extend-per-file-ignores]
-"stra2ical/__init__.py" = ["D400","D200"]
+"stra2cal/__init__.py" = ["D400","D200"]

@@ -6,7 +6,7 @@ from rich.logging import (
 )
 
 # Importing the RichHandler from rich, a library for rich text and beautiful formatting in the terminal
-from stra2ical.utils.config import (
+from stra2cal.utils.config import (
     Config,
 )
 

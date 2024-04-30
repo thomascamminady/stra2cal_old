@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 from fastapi.responses import PlainTextResponse
 
-from stra2ical.datamanager import DataManager
-from stra2ical.utils.logger import logger
+from stra2cal.datamanager import DataManager
+from stra2cal.utils.logger import logger
 
 app = FastAPI()
 

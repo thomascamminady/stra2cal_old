@@ -160,11 +160,11 @@ cython_debug/
 *.pyc
 .venv/
 logs/
-stra2ical/.credentials.json
-stra2ical/.strava_tokens.json
+stra2cal/.credentials.json
+stra2cal/.strava_tokens.json
 activities/*.parquet
 calendar/
-stra2ical/.app.json
-stra2ical/.client.json
+stra2cal/.app.json
+stra2cal/.client.json
 activities/
 .DS_Store

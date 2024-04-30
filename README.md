@@ -1,10 +1,10 @@
-# stra2ical
+# stra2cal
 
 Add all your Strava activities to your calendar.
 
-![plot](https://github.com/thomascamminady/stra2ical/blob/main/Calendar_Week.png)
+![plot](https://github.com/thomascamminady/stra2cal/blob/main/Calendar_Week.png)
 
-![plot](https://github.com/thomascamminady/stra2ical/blob/main/Calendar_Month.png)
+![plot](https://github.com/thomascamminady/stra2cal/blob/main/Calendar_Month.png)
 
 ## Authenticate
 
@@ -18,12 +18,13 @@ The `start_app.sh` script is just starting the server.
 
 ```bash
 nohup ./start_app.sh > nohup.log 2>&1 &
- ```
+```
+
 We can also add this as a `cronjob`, i.e., every six hours, we check if our server is still running and if not, we restart it.
 
 ```bash
 crontab -e
-0 */6 * * * /Users/thomascamminady/Repos/stra2ical/start_app.sh
+0 */6 * * * /Users/thomascamminady/Repos/stra2cal/start_app.sh
 ```
 
 Next we have to **only once** manually trigger the download of all past Strava activities by opening a browser and visiting
@@ -42,9 +43,6 @@ http://127.0.0.1:7777/strava_calendar
 
 Set it to refresh daily. This will trigger a daily download of the last activities and will return the calendar entries.
 
-
-
-
-
 ## Documentation
-Find this repository on [Github](https://github.com/thomascamminady/stra2ical) or check out the [documentation](https://thomascamminady.github.io/stra2ical).
+
+Find this repository on [Github](https://github.com/thomascamminady/stra2cal) or check out the [documentation](https://thomascamminady.github.io/stra2cal).

@@ -7,8 +7,8 @@ import polars as pl
 import requests
 from icalendar import Calendar, Event
 
-from stra2ical.authenticator import Authenticator
-from stra2ical.utils.logger import logger
+from stra2cal.authenticator import Authenticator
+from stra2cal.utils.logger import logger
 
 
 class DataManager:
@@ -51,8 +51,10 @@ class DataManager:
                     summary += f""" ({np.round(row["distance"]/1000,1)}km)"""
                 event.add("summary", summary)
                 event.add(
-                    "description", f"""https://www.strava.com/activities/{row["id"]}"""
+                    "description",
+                    f"""https://www.strava.com/activities/{row["id"]}""",
                 )
+                event.add("geo", "37.386013;-122.082932")
                 event.add("dtstart", row["start_date"])
                 event.add("dtend", row["end"])
                 events.append(event)
